@@ -1,0 +1,27 @@
+<h1>情報を編集する</h1>
+<hr>
+<%= form_for @facility do |f| %>
+
+  <div class="field">
+    <%= f.label :name,"名前" %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", :class => "form-control my-form" %>
+  </div>
+  
+   <div class="field">
+    <%= f.label :image,"画像" %><br />
+    <%= f.file_field :image, autofocus: true, autocomplete: "image" %>
+  </div>
+  
+   <div class="field">
+    <%= f.label :address,"住所"%><br />
+    <%= f.text_field :address, autofocus: true, autocomplete: "address", :class => "form-control my-form" %>
+  </div>
+  
+   <div class="field">
+    <%= f.label :tel,"電話番号" %><br />
+    <%= f.text_field :tel, autofocus: true, autocomplete: "tel", :class => "form-control my-form" %>
+  </div>
+  
+<hr>
+<%= f.submit "登録する", :class => "btn btn-primary" %>
+<% end %>

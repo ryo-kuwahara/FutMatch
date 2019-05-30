@@ -1,0 +1,12 @@
+<h1>施設情報</h1>
+<hr>
+<h3>施設名</h3>
+<h4><%= @facility.name %></h4>
+<h3>画像</h3>
+<h4><%= @facility.image %></h4>
+<h3>住所</h3>
+<h4><%= @facility.address %></h4>
+<h3>電話番号</h3>
+<h4><%= @facility.tel %></h4>
+<hr>
+<a href="/facilities/<%= @facility.id %>/edit" class="btn btn-success">施設情報を編集する</a>

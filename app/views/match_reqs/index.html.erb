@@ -1,0 +1,18 @@
+<h1>対戦募集情報</h1>
+<hr>
+
+<% @match_reqs.each do |m| %>
+<h3>Team名</h3>
+<h4><a href="/teams/<%= m.team_id %>"><%= Team.find(m.team_id).name %></a></h4>
+<h3>開催日</h3>
+<h4><%= m.match_date %></h4>
+<h3>開催時間</h3>
+<h4><%= m.start_time.strftime(" %H時 %M分 ")  %></h4>
+<h3>開催施設</h3>
+<h4><%= m.facility %></h4>
+<br>
+<h3><a href="/match_reqs/<%= m.id %>" class="btn btn-success ">対戦募集詳細</a></h3>
+<hr>
+<% end %>
+
+<p><a href="/" class="btn btn-info">トップに戻る</a></p>

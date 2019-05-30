@@ -1,0 +1,56 @@
+<div class="row">
+<div class="col-xs-6">
+<h1>TEAM情報</h1>
+<hr>
+<h3>チーム名：<%= @team.name %></h3>
+<h3>TEAM紹介：<%= @team.profile %></h3>
+<br>
+
+
+    <% if @team.id == current_team.id %>
+        <h3><a href="/teams/<%= @team.id %>/edit" class="btn btn-success">Team情報を編集する</a></h3>
+        <% else %>
+            <%= form_for @room do |f| %>
+                <%= fields_for @entry do |e| %>
+                <%= e.hidden_field :team_id  , :value => @team.id %>
+                <%= f.submit "チャット", :class => "btn btn-warning" %>
+                <% end %>
+            <% end %>
+            
+    <% end %>
+    <hr>
+<p><a href="/" class="btn btn-info">トップに戻る</a></p>
+<p><a href="/teams" class="btn btn-primary">TEAM一覧</a></p>
+</div>
+    <% if @team.id == current_team.id %>
+    <div class="col-xs-6">
+        <h1>チャット一覧</h1>
+            <% @entries.each do |e| %>
+                <p><a href="/rooms/<%= e.room_id %>"><%= e.room.name %></a></p>
+                <hr>
+            <% end %>
+    <% else %>
+        <% if exist_friend(current_team.id, @team.id) %>
+            <% if exist_friend(@team.id,current_team.id) %>
+                <p>友達です</p>
+            <% else %>
+                <p>申請中</p>
+            <% end %>
+        <% else %>
+            
+                
+            <%= form_for @friend do |f| %>
+                <% if !exist_friend(@team.id,current_team.id) %>
+                    <p><%= f.submit "友達申請", :class => "btn btn-primary" %></p>
+                <% else %>
+                    <p><%= f.submit "承認", :class => "btn btn-primary" %></p>
+                <% end %>
+                <%= f.hidden_field :followed_id, :value => @team.id %>
+            <% end %>
+        
+        <% end %>
+    <% end %>
+    <a href="/rooms" class="btn btn-info">チャット一覧</a>
+</div>
+</div>
+

@@ -1,0 +1,16 @@
+<h1>施設一覧</h1>
+<hr>
+
+<% @facilities.each do |f| %>
+<h3>名前</h3>
+<h4><a href="/facilities/<%= f.id %>"class="color"><%= f.name %></a></h4>
+<h3>画像</h3>
+<h4><%= f.image %></h4>
+<h3>住所</h3>
+<h4><%= f.address %></h4>
+<h3>電話番号</h3>
+<h4><%= f.tel %></h4>
+<hr>
+<% end %>
+
+

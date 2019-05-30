@@ -1,0 +1,10 @@
+<h1>投稿</h1>
+<hr>
+<h3>タイトル</h3>
+<%= @post.title %>
+<h3>内容</h3>
+<%= @post.content %>
+<hr>
+<p><a href="/posts/<%= @post.id %>/edit" class="btn btn-success">編集する</a></p>
+<p><a href="/posts" class="btn btn-info">トップに戻る</a></p>
+<a href="/posts/<%= @post.id %>" data-method="delete" class="btn btn-danger">削除する</a>

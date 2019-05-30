@@ -1,0 +1,54 @@
+<h1>Team情報編集</h1>
+<hr>
+<%= form_for @team do |f| %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :class => "form-control my-form" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name,"名前" %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", :class => "form-control my-form" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rank,"ランク" %><br />
+    <%= f.text_field :rank, autofocus: true, autocomplete: "rank", :class => "form-control my-form" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image, autofocus: true, autocomplete: "image" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cat,"カテゴリー" %><br />
+    <%= f.select :cat, [["関東リーグ", "a"], ["都道府県リーグ", "b"],["競技志向", "c"], ["エンジョイ", "d"]],  :prompt => "選択してください" , :class => "form-control my-form"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :age_ave,"平均年齢" %><br/>
+    <%= f.number_field :age_ave, autofocus: true, autocomplete: "age_ave", :class => "form-control my-form" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pref,"都道府県" %><br />
+   <%= f.select :pref, [["東京都", 1], ["埼玉県", 2],["千葉県", 3], ["栃木県", 4],["神奈川県", 5], ["茨城県", 6],["山梨県", 7]],  :prompt => "選択してください", :class => "form-control my-form" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :facility,"施設" %><br />
+    <%= f.text_field :facility, autofocus: true, autocomplete: "facility", :class => "form-control my-form" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :profile,"プロフィール" %><br />
+    <%= f.text_area :profile, autofocus: true, autocomplete: "profile" , :class => "form-control my-form"%>
+  </div>
+  
+  <div class="actions">
+    <br>
+    <%= f.submit "Team情報編集する", :class => "btn btn-primary" %>
+  </div>
+<% end %>

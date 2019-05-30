@@ -1,0 +1,9 @@
+<h1>最新記事</h1>
+<hr>
+<h3>テスト</h3>
+<% @posts.each do |p| %>
+<p><a href="/posts/<%= p.id %>"><%= p.id %>:<%= p.title %></p></a>
+<p><%= p.content %></p>
+<% end %>
+<hr>
+<a href="/posts/new" class="btn btn-primary">新しく投稿する</a>
