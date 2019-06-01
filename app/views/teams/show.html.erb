@@ -3,6 +3,10 @@
 <h1>TEAM情報</h1>
 <hr>
 <h3>チーム名：<%= @team.name %></h3>
+    <% if @team.image.present? %>
+        <%= image_tag @team.image.to_s, :class => "img-100" %>
+    <% else %>
+    <% end %>
 <h3>TEAM紹介：<%= @team.profile %></h3>
 <br>
 
