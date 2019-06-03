@@ -1,9 +1,16 @@
 <h1>投稿</h1>
 <hr>
+    <% if @post.image.present? %>
+        <%= image_tag @post.image.to_s, :class => "img-100" %>
+    <% else %>
+    
+    
+    
+    <% end %>
 <h3>タイトル</h3>
-<%= @post.title %>
+    <%= @post.title %>
 <h3>内容</h3>
-<%= @post.content %>
+    <%= @post.content %>
 <hr>
 <p><a href="/posts/<%= @post.id %>/edit" class="btn btn-success">編集する</a></p>
 <p><a href="/posts" class="btn btn-info">トップに戻る</a></p>

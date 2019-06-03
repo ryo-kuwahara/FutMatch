@@ -3,10 +3,14 @@
 <h3>施設名</h3>
 <h4><%= @facility.name %></h4>
 <h3>画像</h3>
-<h4><%= @facility.image %></h4>
+    <% if @facility.image.present? %>
+        <%= image_tag @facility.image.to_s, :class => "img-400" %>
+    <% else %>
+    <% end %>
 <h3>住所</h3>
 <h4><%= @facility.address %></h4>
 <h3>電話番号</h3>
 <h4><%= @facility.tel %></h4>
 <hr>
-<a href="/facilities/<%= @facility.id %>/edit" class="btn btn-success">施設情報を編集する</a>
+<p><a href="/facilities/<%= @facility.id %>/edit" class="btn btn-success">施設情報を編集する</a></p>
+<a href="/facilities/<%= @facility.id %>" data-method="delete" class="btn btn-danger">削除する</a>

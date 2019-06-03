@@ -32,4 +32,13 @@ class FacilitiesController < ApplicationController
         flash[:notice] = "編集しました"
     end
     
+    def destroy
+        @facility = Facility.find(params[:id]).destroy
+         redirect_to "/facilities"
+        flash[:notice] = "削除しました"
+    end
+    
+    
+    
+    
 end

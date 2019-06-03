@@ -1,7 +1,7 @@
 <h1>新しく投稿する</h1>
 <hr>
 <%= form_for @post do |f| %>
-<%= f.label :image,"画像" %>
+<%= f.label :image, "画像" %><br />
 <%= f.file_field :image %>
 <h3>タイトル</h3>
 <%= f.text_field :title,:class => "form-control my-form" %>

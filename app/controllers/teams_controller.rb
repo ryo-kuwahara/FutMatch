@@ -5,13 +5,19 @@ class TeamsController < ApplicationController
     end
     
     def show
-        @team = Team.find(params[:id])
-        if @team.id == current_team.id
-           @entries = current_team.entries.limit(3)
+        if team_exist(params[:id])
+            @team = Team.find(params[:id])
+            if @team.id == current_team.id
+               @entries = current_team.entries.limit(3)
+            else
+            @room = Room.new
+            @entry = Entry.new
+            @friend = Friend.new
+            end
         else
-        @room = Room.new
-        @entry = Entry.new
-        @friend = Friend.new
+            flash[:alert] = "Team#{params[:id]}は存在しないTeamです"
+            redirect_to teams_path
+            
         end
         
     end
@@ -28,6 +34,14 @@ class TeamsController < ApplicationController
     end
 
 
+ private
+    def team_exist(team_id)
+        if Team.find_by(id: team_id)
+            return true
+        else
+            return false
+        end
+    end
 
 
 
