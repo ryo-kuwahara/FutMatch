@@ -6,10 +6,16 @@ class RoomsController < ApplicationController
     end
 
     def show
-        @room = Room.find(params[:id])
-        @messages = @room.messages
-        @message = Message.new
-        @entries = @room.entries
+        if room_exist(params[:id])
+            @room = Room.find(params[:id])
+            @messages = @room.messages
+            @message = Message.new
+            @entries = @room.entries
+        else
+            flash[:alert] = "存在しないチャットです"
+            redirect_to rooms_path
+        end
+        
     end
     
     def create
@@ -34,5 +40,17 @@ class RoomsController < ApplicationController
     end
 
 
-
+ private
+    def room_exist(room_id)
+        if Room.find_by(id: room_id)
+            return true
+        else
+            return false
+        end
     end
+
+
+
+
+
+end

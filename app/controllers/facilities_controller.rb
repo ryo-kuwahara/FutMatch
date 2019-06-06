@@ -7,7 +7,12 @@ class FacilitiesController < ApplicationController
     end
     
     def show
-        @facility = Facility.find(params[:id])
+        if facility_exist(params[:id])
+            @facility = Facility.find(params[:id])
+        else
+            flash[:alert] = "存在しない施設情報です"
+            redirect_to facilities_path
+        end
     end
     
     def new
@@ -38,6 +43,16 @@ class FacilitiesController < ApplicationController
         flash[:notice] = "削除しました"
     end
     
+    
+    
+    private
+    def facility_exist(facility_id)
+        if Facility.find_by(id: facility_id)
+            return true
+        else
+            return false
+        end
+    end
     
     
     

@@ -5,8 +5,14 @@ class MatchReqsController < ApplicationController
     end
     
     def show
-        @match_req = MatchReq.find(params[:id])
-        @challenge = Challenge.new
+        if match_req_exist(params[:id])
+            @match_req = MatchReq.find(params[:id])
+            @challenge = Challenge.new
+        else
+            flash[:alert] = "存在しない対戦募集です"
+            redirect_to match_reqs_path
+             
+        end
     end
     
     def new
@@ -20,9 +26,9 @@ class MatchReqsController < ApplicationController
               redirect_to match_reqs_path
           else
                flash[:alert] = "対戦作成されませんでした"
-               render "/match_reqs/new"
+               render "match_reqs/new"
           end
-          
+    end
           def edit
               @match_req = MatchReq.find(params[:id])
           end
@@ -48,10 +54,16 @@ class MatchReqsController < ApplicationController
           end
     
     
-            
-        
-        
-        
-        
+    private
+    def match_req_exist(match_req_id)
+        if MatchReq.find_by(id: match_req_id)
+            return true
+        else
+            return false
+        end
     end
+        
+        
+        
+        
 end
