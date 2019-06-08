@@ -3,7 +3,7 @@
 
 <h3>申請中</h3>
 <% if @request_friends.present? %>
-    <%= @request_friends.each do |r| %>
+    <% @request_friends.each do |r| %>
    <% logger.debug("================== #{r}")%>
         <%= Team.find(r).name %>
     <% end %>
@@ -11,7 +11,7 @@
     <hr>
 <h3>承認待ち</h3>
 <% if @receive_friends.present? %>
-    <%= @receive_friends.each do |r| %>
+    <% @receive_friends.each do |r| %>
         <%= Team.find(r).name %>
     <% end %>
 <% end %>
@@ -19,7 +19,7 @@
     <hr>
 <h3>友達</h3>
 <% if @friends.present? %>
-    <%= @friends.each do |r| %>
+    <% @friends.each do |r| %>
         <%= Team.find(r).name %>
     <% end %>
 <% end %>
