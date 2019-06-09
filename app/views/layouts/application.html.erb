@@ -31,7 +31,9 @@
         <li><a href="/match_reqs">対戦募集</a></li>
         <li><a href="/rooms">メッセージ</a></li>
         <li><a href="/facilities">施設一覧</a></li>
-        <li><a href="/posts/new">ニュース</a></li>
+          <% if current_team.id == 1 %>
+            <li><a href="/posts/new">ニュース作成</a></li>
+          <% end %>
         <li><%= link_to "ログアウト",destroy_team_session_path, :method => :delete %></li>
         <% else %>
         <li><a href="/teams/sign_up">登録する</a></li>

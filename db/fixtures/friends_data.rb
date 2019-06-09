@@ -7,3 +7,4 @@ Friend.seed(:id,
   {:id => 6, :follower_id => 4, :followed_id => 1 },
   {:id => 7, :follower_id => 5, :followed_id => 1 }
 )
+

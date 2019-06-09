@@ -13,6 +13,8 @@
 
     <% if @team.id == current_team.id %>
         <h3><a href="/teams/<%= @team.id %>/edit" class="btn btn-success">Team情報を編集する</a></h3>
+        <hr>
+        <p><%= link_to "退会する", "/teams/#{@team.id}", :method => "delete", :class => "btn btn-danger" %></p>
         <% else %>
             <%= form_for @room do |f| %>
                 <%= fields_for @entry do |e| %>
@@ -20,7 +22,6 @@
                 <%= f.submit "チャット", :class => "btn btn-warning" %>
                 <% end %>
             <% end %>
-            
     <% end %>
     <hr>
 <p><a href="/" class="btn btn-info">トップに戻る</a></p>

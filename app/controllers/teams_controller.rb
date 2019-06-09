@@ -27,10 +27,27 @@ class TeamsController < ApplicationController
     end
     
     def update
-         @team = Team.find(params[:id])
-         @team.update(params.require(:team).permit(:name,:image,:rank,:cat,:age_ave,:pref,:facility,:profile))
-         flash[:notice] = "情報を編集しました"
-         redirect_to "/teams/#{@team.id}"
+         @team = Team.find_by(id: params[:id])
+            if @team
+                 @team.update(params.require(:team).permit(:name,:image,:rank,:cat,:age_ave,:pref,:facility,:profile))
+                 flash[:notice] = "情報を編集しました"
+                 redirect_to "/teams/#{@team.id}"
+            else
+                flash[:alert] = "編集できませんでした"
+                render "welcome/index"
+            end
+    end
+    
+    def destroy
+       @team = Team.find_by(id: params[:id])
+       if @team
+           flash[:notice] = "退会処理完了"
+           @team.destroy
+           redirect_to root_path
+       else
+           flash[:alert] = "退会処理出来ませんでした"
+           render "welcome/index"
+       end
     end
 
 

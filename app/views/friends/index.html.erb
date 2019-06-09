@@ -5,14 +5,20 @@
 <% if @request_friends.present? %>
     <% @request_friends.each do |r| %>
    <% logger.debug("================== #{r}")%>
-        <%= Team.find(r).name %>
+        <%= link_to  "/teams/#{r}" do %>
+        <%= image_tag Team.find(r).image.to_s, :class => "img-30" %>
+        <% end %>
+        <%= link_to Team.find(r).name, "/teams/#{r}" %>
     <% end %>
 <% end %>
     <hr>
 <h3>承認待ち</h3>
 <% if @receive_friends.present? %>
     <% @receive_friends.each do |r| %>
-        <%= Team.find(r).name %>
+        <%= link_to  "/teams/#{r}" do %>
+        <%= image_tag Team.find(r).image.to_s, :class => "img-30" %>
+        <% end %>
+        <%= link_to Team.find(r).name, "/teams/#{r}" %>
     <% end %>
 <% end %>
 
@@ -20,7 +26,12 @@
 <h3>友達</h3>
 <% if @friends.present? %>
     <% @friends.each do |r| %>
-        <%= Team.find(r).name %>
+    <div>
+        <%= link_to  "/teams/#{r}" do %>
+        <%= image_tag Team.find(r).image.to_s, :class => "img-30" %>
+        <% end %>
+        <%= link_to Team.find(r).name, "/teams/#{r}" %>
+    </div>
     <% end %>
 <% end %>
  <hr>

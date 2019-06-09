@@ -14,12 +14,12 @@
  *= require_self
  */
 body{
-    background-image: url(/assets/header12.jpeg);
     height:100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    background-color: rgb(0,163,175);
+    /*background-color: rgb(0,163,175);*/
+    background-color: lightgray;
 }
 

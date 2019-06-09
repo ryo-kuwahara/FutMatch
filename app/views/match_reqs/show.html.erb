@@ -15,7 +15,7 @@
         <p><a href="/match_reqs/<%= @match_req.id %>/edit" class="btn btn-success">対戦募集を変更する</a></p>
         <a href="/match_reqs/<%= @match_req.id %>" data-method="delete" class="btn btn-danger">募集を削除する</a>
     <% else %>
-        <% if  !challenge_exist(@match_req.id) %>
+        <% if  challenge_exist(@match_req.id) %>
             <%= form_for @challenge do |f| %>
                 <%= f.hidden_field :match_req_id, :value => @match_req.id %>
                 <%= f.submit "応募する" ,:class => "btn btn-danger my-form" %>

@@ -34,22 +34,32 @@ class MatchReqsController < ApplicationController
           end
           
           def update
-               @match_req = MatchReq.find(params[:id])
-               @match_req.update((params.require(:match_req).permit(:content,:title,:team_id,:match_date,:start_time,:end_time,:facility,:req_team_num).merge(:team_id => current_team.id)))
-               if @match_req.save
-                   redirect_to :back
-                   flash[:notice] = "編集が完了しました"
+            
+               @match_req = MatchReq.find_by(id: params[:id])
+               if @match_req 
+                    @match_req.update((params.require(:match_req).permit(:content,:title,:team_id,:match_date,:start_time,:end_time,:facility,:req_team_num).merge(:team_id => current_team.id)))
+                    @match_req.save
+                    redirect_to :back
+                    flash[:notice] = "編集が完了しました"
+                else
+                     flash[:alert] = "編集できませんでした"
+                     render "welcome/index"
                end
           end
                
           def destroy
               logger.debug("================== destroy")
-               @match_req = MatchReq.find(params[:id])
-               if @match_req.team_id == current_team.id
-                  @match_req.destroy
-                  redirect_to "/match_reqs"
-                  flash[:notice] = "募集を削除しました"
+               @match_req = MatchReq.find_by(id: params[:id])
+               if @match_req
+                    if @match_req.team_id == current_team.id
+                        @match_req.destroy
+                        redirect_to "/match_reqs"
+                        flash[:notice] = "募集を削除しました"
+                    else
+                    end
                else
+                    flash[:alert] = "募集削除出来ませんでした"
+                    render "welcome/index"
                end
           end
     
