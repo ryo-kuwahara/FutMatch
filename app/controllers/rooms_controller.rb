@@ -1,8 +1,8 @@
 class RoomsController < ApplicationController
-    before_action :authenticate_team!, :only => [:index,:show,:create,:edit,:update]
+    before_action :authenticate_team!, :only => [:index,:show,:create,:edit,:update,:destroy]
 
     def index
-        @entries = current_team.entries
+        @rooms = Room.all
     end
 
     def show
@@ -33,10 +33,28 @@ class RoomsController < ApplicationController
 
 
     def update
-        @room = Room.find(params[:id])
-        @room.update(params.require(:room).permit(:name,:explain))
-        redirect_to :back
-        flash[:notice] = "編集が完了しました"
+        @room = Room.find_by(id: params[:id])
+        if @room
+            @room.update(params.require(:room).permit(:name,:explain))
+            redirect_to :back
+            flash[:notice] = "編集が完了しました"
+        else
+            flash[:alert] = "編集できませんでした"
+            render "welcome/index"
+            
+        end
+    end
+    
+    def destroy
+        @room = Room.find_by(id: params[:id])
+        if @room
+            flash[:notice] = "チャットを削除しました"
+            @room.destroy
+            redirect_to root_path
+        else
+           flash[:alert] = "チャットを削除できませんでした"
+           render "welcome/index"
+        end
     end
 
 

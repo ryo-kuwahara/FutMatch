@@ -3,8 +3,8 @@
   <head>
     <title>FutMatch</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -19,18 +19,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">FutMatch</a>
+      
+      <a href="/" class="navbar-brand"><i class="fas fa-futbol fa-spin"></i>FutMatch<i class="fas fa-futbol fa-spin"></i></a>
     </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if team_signed_in? %>
-        <li><a href="/teams">TEAM一覧</a></li>
-        <li><a href="/teams/<%= current_team.id %>">TEAM情報</a></li>
-        <li><a href="/friends">申請一覧</a></li>
-        <li><a href="/match_reqs/new">対戦作成</a></li>
-        <li><a href="/match_reqs">対戦募集</a></li>
-        <li><a href="/rooms">メッセージ</a></li>
-        <li><a href="/facilities">施設一覧</a></li>
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle btn-lg" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Team情報
+          <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="/teams">TEAM一覧</a></li>
+          <li><a href="/teams/<%= current_team.id %>">TEAM情報</a></li>
+          <li><a href="/friends">申請一覧</a></li>
+          <li><a href="/match_reqs/new">対戦作成</a></li>
+          <li><a href="/match_reqs">対戦募集</a></li>
+          <li><a href="/rooms">メッセージ</a></li>
+          <li><a href="/facilities">施設一覧</a></li>
           <% if current_team.id == 1 %>
             <li><a href="/posts/new">ニュース作成</a></li>
           <% end %>
@@ -39,6 +46,8 @@
         <li><a href="/teams/sign_up">登録する</a></li>
         <li><a href="/teams/sign_in">ログインする</a></li>
         <% end %>
+          </ul>
+        </div>
       </ul>
       </div>
   </div>
@@ -58,3 +67,6 @@
     </div>
   </body>
 </html>
+
+
+

@@ -1,61 +1,62 @@
 <div class="row">
-<div class="col-xs-6">
-<h1>TEAM情報</h1>
-<hr>
-<h3>チーム名：<%= @team.name %></h3>
+    <div class="col-xs-6">
+    <h1>TEAM情報</h1>
+    <hr>
+    <h3>チーム名：<%= @team.name %></h3>
     <% if @team.image.present? %>
         <%= image_tag @team.image.to_s, :class => "img-100" %>
     <% else %>
     <% end %>
-<h3>TEAM紹介：<%= @team.profile %></h3>
-<br>
+    <h3>TEAM紹介：<%= @team.profile %></h3>
+    <br>
 
 
     <% if @team.id == current_team.id %>
-        <h3><a href="/teams/<%= @team.id %>/edit" class="btn btn-success">Team情報を編集する</a></h3>
+        <a href="/teams/<%= @team.id %>/edit" class="btn-gradient-3d">Team情報を編集する</a>
         <hr>
-        <p><%= link_to "退会する", "/teams/#{@team.id}", :method => "delete", :class => "btn btn-danger" %></p>
-        <% else %>
+        <p><%= link_to "退会する", "/teams/#{@team.id}", :method => "delete", :class => "btn-gradient-3d" %></p>
+    <% else %>
             <%= form_for @room do |f| %>
                 <%= fields_for @entry do |e| %>
                 <%= e.hidden_field :team_id  , :value => @team.id %>
-                <%= f.submit "チャット", :class => "btn btn-warning" %>
+                <p><%= f.submit "チャット", :class => "btn-gradient-3d" %></p>
                 <% end %>
             <% end %>
     <% end %>
     <hr>
-<p><a href="/" class="btn btn-info">トップに戻る</a></p>
-<p><a href="/teams" class="btn btn-primary">TEAM一覧</a></p>
+<p><a href="/" class="btn-gradient-3d">トップに戻る</a></p>
+<p><a href="/teams" class="btn-gradient-3d">TEAM一覧</a></p>
 </div>
     <% if @team.id == current_team.id %>
     <div class="col-xs-6">
         <h1>チャット一覧</h1>
             <% @entries.each do |e| %>
-                <p><a href="/rooms/<%= e.room_id %>"><%= e.room.name %></a></p>
+                <p><a href="/rooms/<%= e.room.id %>"><%= e.room.name %></a></p>
                 <hr>
             <% end %>
     <% else %>
         <% if exist_friend(current_team.id, @team.id) %>
             <% if exist_friend(@team.id,current_team.id) %>
-                <p>友達です</p>
+                <i class="fas fa-user-friends fa-2px"></i>友達です<i class="fas fa-user-friends fa-2px"></i>
+                <br><br>
             <% else %>
-                <p>申請中</p>
+                <i class="fab fa-creative-commons-sampling fa-2x"></i>申請中<i class="fab fa-creative-commons-sampling fa-2x"></i>
             <% end %>
         <% else %>
             
                 
             <%= form_for @friend do |f| %>
                 <% if !exist_friend(@team.id,current_team.id) %>
-                    <p><%= f.submit "友達申請", :class => "btn btn-primary" %></p>
+                    <p><%= f.submit "友達申請", :class => "btn-gradient-3d" %></p>
                 <% else %>
-                    <p><%= f.submit "承認", :class => "btn btn-primary" %></p>
+                    <p><%= f.submit "承認", :class => "btn-gradient-3d" %></p>
                 <% end %>
                 <%= f.hidden_field :followed_id, :value => @team.id %>
             <% end %>
-        
         <% end %>
     <% end %>
-    <a href="/rooms" class="btn btn-info">チャット一覧</a>
+    <hr>
+    <a href="/rooms" class="btn-gradient-3d">チャット一覧</a>
 </div>
 </div>
 

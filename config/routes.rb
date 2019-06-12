@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :facilities
   resources :relations, :only =>[:create]
   resources :messages, :only =>[:create]
-  resources :rooms, :only =>[:create,:show,:index,:edit,:update]
+  resources :rooms, :only =>[:create,:show,:index,:edit,:update,:destroy]
   resources :challenges, :only =>[:new,:create,:destroy]
   resources :friends, only: [:index,:show,:create, :destroy]
   

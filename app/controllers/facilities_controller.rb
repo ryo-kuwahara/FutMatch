@@ -1,6 +1,6 @@
 class FacilitiesController < ApplicationController
     
-    before_action :authenticate_team!, :only => [:index,:new,:create,:edit]
+    before_action :authenticate_team!, :only => [:index,:new,:create,:edit,:destroy]
     
     def index
         @facilities = Facility.all
@@ -31,16 +31,29 @@ class FacilitiesController < ApplicationController
     end
     
     def update
-        @facility = Facility.find(params[:id])
-        @facility.update(params.require(:facility).permit(:name,:tel,:address,:image))
-        redirect_to "/facilities/#{@facility.id}/edit"
-        flash[:notice] = "編集しました"
+        @facility = Facility.find_by(id: params[:id])
+        if @facility
+            @facility.update(params.require(:facility).permit(:name,:tel,:address,:image))
+            redirect_to "/facilities/#{@facility.id}/edit"
+            flash[:notice] = "編集しました"
+        else
+            flash[:alert] = "情報編集できませんでした"
+            render "welcome/index"
+        end
     end
     
     def destroy
-        @facility = Facility.find(params[:id]).destroy
-         redirect_to "/facilities"
-        flash[:notice] = "削除しました"
+        @facility = Facility.find_by(id: params[:id])
+        if @facility
+            flash[:notice] = "削除しました"
+            @facility.destroy
+            redirect_to "/facilities"
+        else
+            flash[:alert] = "情報削除できませんでした"
+            render "welcome/index"
+        end
+            
+            
     end
     
     

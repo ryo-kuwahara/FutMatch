@@ -24,13 +24,28 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
     end
     def update
-        @post = Post.find(params[:id])
-        @post.update(params.require(:post).permit(:title,:content,:image))
+        @post = Post.find_by(id: params[:id])
+        if @post
+            @post.update(params.require(:post).permit(:title,:content,:image))
+            redirect_to "/posts/#{@post.id}/edit"
+            flash[:notice] = "編集しました"
+        else
+            flash[:alert] = "情報編集できませんでした"
+            render "welcome/index"
+        end
+        
     end
     def destroy
-        @post = Post.find(params[:id]).destroy
-        redirect_to "/posts"
-        flash[:alert] = "削除しました"
+        @post = Post.find_by(id: params[:id])
+        if @post
+            flash[:alert] = "削除しました"
+            @post.destroy
+            redirect_to "/posts"
+        else
+            flash[:alert] = "情報削除できませんでした"
+            render "welcome/index"
+        end
+            
     end
     
     

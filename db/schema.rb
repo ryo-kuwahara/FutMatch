@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190523103825) do
+ActiveRecord::Schema.define(version: 20190611134537) do
 
   create_table "challenges", force: :cascade do |t|
     t.integer  "match_req_id"
@@ -82,10 +82,9 @@ ActiveRecord::Schema.define(version: 20190523103825) do
   end
 
   create_table "rooms", force: :cascade do |t|
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.integer  "relation_id"
-    t.string   "name",        default: "新規チャット"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "name",       default: "新規チャット"
     t.text     "explain"
   end
 

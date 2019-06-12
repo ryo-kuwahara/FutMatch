@@ -1,9 +1,28 @@
-<h1>TEAM一覧</h1>
-<hr>
-
-<% @teams.each do |t| %>
-<h3>チーム名：<a href="/teams/<%= t.id %>"><%= t.name %></a></h3>
-<hr>
-<% end %>
-
-<a href="/" class="btn btn-info">トップに戻る</a>
+<h1 class="my-3 ml-3">TEAM一覧</h1>
+ 
+    <div class="col-5 ml-3">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Team名</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <% @teams.each do |t| %>
+                    <td><%= t.id %></a></td>
+                    <td>    <%= link_to  "/teams/#{t.id}" do %>
+                            <%= image_tag t.image.to_s, :class => "img-30" %>
+                            <% end %>
+                            <a href="/teams/<%= t.id %>"><%= t.name %></a>
+                    </td>
+                </tr>
+                    <% end %>
+            </tbody>
+        </table>
+    </div>
+    <br><br>
+    <hr>
+    
+    <a href="/" class="btn-gradient-3d">TOPに戻る</a>

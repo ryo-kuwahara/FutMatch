@@ -1,8 +1,8 @@
 <h1>チャット一覧</h1>
 <hr>
-<% @entries.each do |r| %>
-<h4><a href= "/rooms/<%= r.room_id %>"><%= r.room.name %></a></h4>
-<% end %>
+    <% @rooms.each do |r| %>
+        <h4><a href= "/rooms/<%= r.id %>"><%= r.name %></a></h4>
+    <% end %>
 <hr>
-<p><a href="/teams/<% current_team.id %>" class="btn btn-success"><%= current_team.name %></a></p>
-<a href="/" class="btn btn-primary">トップに戻る</a>
+<p><a href="/teams/<% current_team.id %>" class="btn-gradient-3d"><%= current_team.name %></a></p>
+<a href="/" class="btn-gradient-3d">トップに戻る</a>
