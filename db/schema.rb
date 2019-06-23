@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190611134537) do
+ActiveRecord::Schema.define(version: 20190616121728) do
 
   create_table "challenges", force: :cascade do |t|
     t.integer  "match_req_id"
@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(version: 20190611134537) do
     t.date     "match_date"
     t.time     "start_time"
     t.time     "end_time"
-    t.string   "facility"
     t.integer  "req_team_num"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "facility_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -108,10 +108,10 @@ ActiveRecord::Schema.define(version: 20190611134537) do
     t.string   "cat"
     t.integer  "age_ave"
     t.integer  "pref"
-    t.string   "facility"
     t.text     "profile"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "facility_id"
     t.index ["email"], name: "index_teams_on_email", unique: true
     t.index ["reset_password_token"], name: "index_teams_on_reset_password_token", unique: true
   end

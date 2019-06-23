@@ -20,7 +20,7 @@ class MatchReqsController < ApplicationController
         
     end
     def create
-          @match_req = MatchReq.create(params.require(:match_req).permit(:content,:title,:team_id,:match_date,:start_time,:end_time,:facility,:req_team_num).merge(:team_id => current_team.id))
+          @match_req = MatchReq.create(params.require(:match_req).permit(:content,:title,:team_id,:match_date,:start_time,:end_time,:facility_id,:req_team_num).merge(:team_id => current_team.id))
           if @match_req.save 
               flash[:notice] = "対戦が作成されました"
               redirect_to match_reqs_path

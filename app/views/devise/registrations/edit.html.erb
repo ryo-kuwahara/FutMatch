@@ -39,8 +39,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :facility,"施設" %><br />
-    <%= f.text_field :facility, autofocus: true, autocomplete: "facility", :class => "form-control my-form" %>
+    <%= f.label :facility_id,"施設" %><br />
+    <%= f.select :facility_id, [["品川フットサルコート", 1], ["ビックロ新宿スタジアム", 2],["東陽町コート", 3], ["アディダスフットサルパーク渋谷", 4],["東京フットサルクルービ芝浦", 5]],  :prompt => "選択してください", :class => "form-control my-form" %>
   </div>
 
   <div class="field">
@@ -59,12 +59,12 @@
 
   <div class="actions">
     <br>
-    <%= f.submit "Update", :class => "btn btn-primary" %>
+    <%= f.submit "Update", :class => "btn-gradient-3d" %>
   </div>
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => "btn btn-warning" %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, :class => "btn-gradient-3d" %></p>
 
 <%= link_to "Back", :back %>

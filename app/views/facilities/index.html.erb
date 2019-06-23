@@ -1,19 +1,38 @@
-<h1>施設一覧</h1>
-<hr>
 
-<% @facilities.each do |f| %>
-<h3>名前</h3>
-<h4><a href="/facilities/<%= f.id %>"class="color"><%= f.name %></a></h4>
-<h3>画像</h3>
-     <% if f.image.present? %>
-        <%= image_tag f.image.to_s, :class => "img-400" %>
-    <% else %>
-    <% end %>
-<h3>住所</h3>
-<h4><%= f.address %></h4>
-<h3>電話番号</h3>
-<h4><%= f.tel %></h4>
-<hr>
-<% end %>
 
+<h1 class="my-3 ml-3">施設一覧</h1>
+ 
+    <div class="col-5 ml-3">
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>名前</th>
+                    <th>住所</th>
+                    <th>電話番号</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <% @facilities.each do |f| %>
+                    <td><%= f.id %></a></td>
+                    <td>    
+                        <%= link_to f.name, "/facilities/#{f.id}" %>
+                    </td>
+                    <td>    
+                        <%= f.address %>
+                    </td>
+                    <td>    
+                       <%= f.tel %>
+                    </td>
+                </tr>
+                    <% end %>
+            </tbody>
+        </table>
+    </div>
+    <br><br>
+    <hr>
+
+<p><a href="/" class="btn-gradient-3d">トップに戻る</a></p>
 

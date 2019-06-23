@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :posts, :only => [:show,:index,:new,:create,:edit,:update,:destroy]
-  root "welcome#index"
+  root "match_reqs#index"
   resources :welcome, :only =>[:index]
   resources :teams, :only => [:show,:index,:edit,:update,:destroy]
   resources :match_reqs

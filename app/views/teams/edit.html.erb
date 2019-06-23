@@ -39,7 +39,7 @@
 
   <div class="field">
     <%= f.label :facility,"施設" %><br />
-    <%= f.text_field :facility, autofocus: true, autocomplete: "facility", :class => "form-control my-form" %>
+    <%= f.select :facility_id, [["品川フットサルコート", 1], ["ビックロ新宿スタジアム", 2],["東陽町コート", 3], ["アディダスフットサルパーク渋谷", 4],["東京フットサルクルービ芝浦", 5]],  :prompt => "選択してください", :class => "form-control my-form" %>
   </div>
 
   <div class="field">
@@ -49,6 +49,6 @@
   
   <div class="actions">
     <br>
-    <%= f.submit "Team情報編集する", :class => "btn btn-primary" %>
+    <%= f.submit "Team情報編集する", :class => "btn-gradient-3d" %>
   </div>
 <% end %>
