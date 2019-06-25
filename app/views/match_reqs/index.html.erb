@@ -20,14 +20,14 @@
     <div class="item active">
       <%= image_tag ('futsal.jpg'), :class => "img-200" %>
       <div class="carousel-caption">
-        出会いが沢山あるよ！
+        フットサルで汗を流そう！
       </div>
     </div>
     <div class="item">
         <%= image_tag ('futsal2.jpg'), :class => "img-200" %>
       <div class="carousel-caption">
         イケメンを探そう！
-      </div>
+      </div>！
     </div>
      <div class="item">
        <%= image_tag ('futsal3.jpg'), :class => "img-200" %>
@@ -38,7 +38,7 @@
      <div class="item">
        <%= image_tag ('futsal4.jpg'), :class => "img-200" %>
       <div class="carousel-caption">
-        フットサルで彼女を探そう！！
+        フットサル通して仲良くなろう！！
       </div>
     </div>
     ...
@@ -74,7 +74,7 @@
                     <% @match_reqs.each do |m| %>
                     <td><%= m.id %></a></td>
                     <td>    
-                        <%= m.title %>
+                       <a href="/match_reqs/<%= m.id %>"><%= m.title %></a>
                     </td>
                     <td>    
                         <%= m.match_date %>

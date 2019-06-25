@@ -2,7 +2,7 @@ class RoomsController < ApplicationController
     before_action :authenticate_team!, :only => [:index,:show,:create,:edit,:update,:destroy]
 
     def index
-        @rooms = Room.all
+        @entries = Entry.where(team_id: current_team.id)
     end
 
     def show
