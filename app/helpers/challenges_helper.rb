@@ -4,7 +4,7 @@ module ChallengesHelper
         team = match_req.team_id
             if Challenge.where(match_req_id: team, team_id: current_team.id ).present?
                  return true
-             else
+            else
                 logger.debug("=============================false")
                 return false
             end

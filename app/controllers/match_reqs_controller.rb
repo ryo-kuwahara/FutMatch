@@ -1,4 +1,6 @@
 class MatchReqsController < ApplicationController
+    before_action :authenticate_team!
+    
     
     def index
         @match_reqs = MatchReq.all

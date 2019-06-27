@@ -1,6 +1,5 @@
 <h1>チャット一覧</h1>
 <hr>
-
         <% @entries.each do |e| %>
             <h4><a href= "/rooms/<%= e.room_id %>"><%= Room.find_by(id: e.room_id).name %></a></h4>
         <% end %>
