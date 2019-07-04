@@ -21,7 +21,6 @@ class Teams::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    logger.debug("================== #{params[:team][:pref]}")
   super
   end
 
