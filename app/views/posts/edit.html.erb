@@ -1,12 +1,12 @@
 <h1>投稿を編集する</h1>
 <hr>
-<%= form_for @post do |f| %>
-<%= f.label :image,"画像" %>
-<%= f.file_field :image %>
-<h3>タイトル</h3>
-<%= f.text_field :title,:class => "form-control my-form" %>
-<h3>内容</h3>
-<%= f.text_area :content,:class => "form-control my-form" %>
+    <%= form_for @post do |f| %>
+        <%= f.label :image,"画像" %>
+        <%= f.file_field :image %>
+        <h3>タイトル</h3>
+        <%= f.text_field :title,:class => "form-control my-form" %>
+        <h3>内容</h3>
+        <%= f.text_area :content,:class => "form-control my-form" %>
 <hr>
 <p><%= f.submit "編集する", :class => "btn btn-success" %></p>
 <% end %>
