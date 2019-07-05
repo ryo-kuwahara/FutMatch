@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
     before_action :authenticate_team!, :only => [:show,:index,:edit,:update]
     def index 
-        @teams = Team.all
+        @teams = Team.where.not(id: 0)
     end
     
     def show

@@ -1,3 +1,4 @@
+Friend.destroy_all
 Friend.seed(:id,
   {:id => 1, :follower_id => 1, :followed_id => 2 },
   {:id => 2, :follower_id => 1, :followed_id => 3 },
