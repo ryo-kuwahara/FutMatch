@@ -82,8 +82,12 @@
                     <td>    
                        <%= m.start_time.strftime(" %H時 %M分 ") %>
                     </td>
-                    <td>    
-                       <%= link_to Facility.find_by(id: m.facility_id).name, facility_path(m.facility_id) %>
+                    <td>
+                       <% if Facility.find_by(id: m.facility_id) %>
+                           <%= link_to Facility.find_by(id: m.facility_id).name, facility_path(m.facility_id) %>
+                       <% else %>
+                        ---
+                       <% end %>
                     </td>
                 </tr>
                     <% end %>

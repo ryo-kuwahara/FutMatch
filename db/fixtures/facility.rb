@@ -1,3 +1,4 @@
+Facility.destroy_all
 Facility.seed(:id,
   {:id => 1, :name => "フットサルコート品川", :address => "東京都品川八潮5-5-3", :tel => "03-3799-3008"},
   {:id => 2, :name => "ビックロ新宿スタジアム", :address => "東京都新宿区新宿3‐29‐1 MI新宿ビル本館 屋上", :tel => "03-5312-1212"},
