@@ -24,4 +24,18 @@ body{
     font-family: 'Kosugi Maru', sans-serif;
 }
 
+.r-fas {
+    margin-left: 10px;
+}
 
+.l-fas {
+    margin-right: 10px;
+}
+
+.fut {
+    font-size: 24px;
+    font-family: 'Rubik Mono One', sans-serif;
+    font-family: 'Bangers', cursive;
+    font-family: 'Monoton', cursive;
+    font-family: 'Marck Script', cursive;
+}
