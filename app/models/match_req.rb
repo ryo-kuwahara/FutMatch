@@ -7,7 +7,8 @@ class MatchReq < ApplicationRecord
   end 
     
     belongs_to :relation,optional: true
-    has_many :team
+    belongs_to  :team
+    belongs_to  :facility
     has_many :challenges
   
 end
