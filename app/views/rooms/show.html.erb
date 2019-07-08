@@ -9,8 +9,8 @@
         <h5><strong><a href="/teams/<%= e.team_id %>"><%= e.team.name %></a></strong></h5>
     <% end %>
             <hr>
-            <p><a href="/rooms/<%= @room.id %>/edit" class="btn-gradient-3d"><i class="fa fa-caret-right">情報を編集する</a></p>
-            <p><a href="/rooms/<%= @room.id %>" data-method="delete" class="btn-gradient-3d"><i class="fa fa-caret-right">削除する</a></p>
+            <p><a href="/rooms/<%= @room.id %>/edit" class="btn-gradient-3d">情報を編集する</a></p>
+            <p><a href="/rooms/<%= @room.id %>" data-method="delete" class="btn-gradient-3d">削除する</a></p>
     </div>
     <div class="col-xs-9">
         <% if @messages.present? %>

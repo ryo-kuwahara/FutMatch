@@ -1,5 +1,5 @@
 class MatchReqsController < ApplicationController
-    before_action :authenticate_team!
+    before_action :authenticate_team!, :only => [:show,:new,:create,:edit,:update,:destroy]
     
     
     def index
@@ -35,10 +35,9 @@ class MatchReqsController < ApplicationController
               @match_req = MatchReq.find(params[:id])
           end
           
-          def update
-            
-               @match_req = MatchReq.find_by(id: params[:id])
-               if @match_req 
+            def update
+                @match_req = MatchReq.find_by(id: params[:id])
+                if @match_req 
                     @match_req.update((params.require(:match_req).permit(:content,:title,:team_id,:match_date,:start_time,:end_time,:facility,:req_team_num).merge(:team_id => current_team.id)))
                     @match_req.save
                     redirect_to :back
@@ -46,8 +45,8 @@ class MatchReqsController < ApplicationController
                 else
                      flash[:alert] = "編集できませんでした"
                      render "welcome/index"
-               end
-          end
+                end
+            end
                
           def destroy
               logger.debug("================== destroy")
