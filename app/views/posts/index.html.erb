@@ -1,9 +1,36 @@
     <h1>最新記事</h1>
     <hr>
-    <h3>テスト</h3>
-        <% @posts.each do |p| %>
-            <p><a href="/posts/<%= p.id %>"><%= p.id %>:<%= p.title %></p></a>
-            <p><%= p.content %></p>
-        <% end %>
+<!---------------------------------------------------------------        -->
+        
+        <div class="col-5 ml-3">
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>タイトル</th>
+                    <th>内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <% @posts.each do |p| %>
+                    <td><%= p.id %></td>
+                    <td>    
+                       <a href="/posts/<%= p.id %>"><%= p.title %></a>
+                    </td>
+                    <td>    
+                        <%= p.content %>
+                    </td>
+                </tr>
+                    <% end %>
+            </tbody>
+        </table>
+    </div>
+    <br><br>
     <hr>
-    <a href="/posts/new" class="btn-gradient-3d">新しく投稿する</a>
+<% if current_team.id == 0 %>
+    <p><a href="/posts/new" class="btn-gradient-3d">新しく投稿する</a></p>
+<% else %>
+<% end %>
+<p><a href="/" class="btn-gradient-3d">トップに戻る</a></p>

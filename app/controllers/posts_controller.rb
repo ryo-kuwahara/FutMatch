@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
     before_action :authenticate_team!, :only =>[:new,:create,:edit,:update,:destroy]
     
+    def index
+       @posts = Post.all
+    end
+    
     def show
         if post_exist(params[:id])
             @post = Post.find(params[:id])
@@ -11,9 +15,7 @@ class PostsController < ApplicationController
         
         
     end
-    def index
-        @posts = Post.all
-    end
+   
     def new
         @post = Post.new
     end
@@ -37,6 +39,7 @@ class PostsController < ApplicationController
     end
     def destroy
         @post = Post.find_by(id: params[:id])
+        @team = Team.find_by(id: @post.team_id)
         if @post
             flash[:alert] = "削除しました"
             @post.destroy
