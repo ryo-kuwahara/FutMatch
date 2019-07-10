@@ -14,38 +14,38 @@
     </div>
     <div class="col-xs-9">
         <% if @messages.present? %>
-        <% @messages.each do |m| %>
-        <% if m.team_id == current_team.id %>
-        <h4 class="text-right">
-            <p class="alert alert-success">
-                <%= m.message %>
-                <br><br>
-                <small><strong><a href="/teams/<%= m.team_id %>"><%= m.team.name %></a></strong></small>
-            </p>
-        </h4>
-        <% else %>
-         <h4 class="text-left">
-            <p class="alert alert-info">
-                <%= m.message %>
-                <br><br>
-                <small><strong><a href="/teams/<%= m.team_id %>"><%= m.team.name %></a></strong></small>
-            </p>
-        </h4>
+            <% @messages.each do |m| %>
+                <% if m.team_id == current_team.id %>
+                    <h4 class="text-right">
+                    <p class="alert alert-success">
+                    <%= m.message %>
+                    <br><br>
+                    <small><strong><a href="/teams/<%= m.team_id %>"><%= m.team.name %></a></strong></small>
+                    </p>
+                    </h4>
+                <% else %>
+                    <h4 class="text-left">
+                    <p class="alert alert-info">
+                    <%= m.message %>
+                    <br><br>
+                    <small><strong><a href="/teams/<%= m.team_id %>"><%= m.team.name %></a></strong></small>
+                    </p>
+                    </h4>
+                <% end %>
             <% end %>
-        <% end %>
         <% else %>
-        <br>
-        <h3 class="text-center">メッセージはまだありません</h3>
-        <br>
+            <br>
+            <h3 class="text-center">メッセージはまだありません</h3>
+            <br>
         <% end %>
         <hr>
         <div class="text-center">
-        <%= form_for @message do |f| %>
-        <%= f.text_field :message, :class => "form-control",:placeholder => "入力してください" %>
-        <%= f.hidden_field :room_id, :value => @room.id %>
-        <br>
-        <%= f.submit "コメントする", :class => "btn-gradient-3d" %>
-        <% end %>
+            <%= form_for @message do |f| %>
+                <%= f.text_field :message, :class => "form-control",:placeholder => "入力してください" %>
+                <%= f.hidden_field :room_id, :value => @room.id %>
+                <br>
+                <%= f.submit "コメントする", :class => "btn-gradient-3d" %>
+            <% end %>
         </div>
     </div>
 </div>
