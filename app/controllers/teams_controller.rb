@@ -10,7 +10,6 @@ class TeamsController < ApplicationController
             if @team.id == current_team.id
                @entries = current_team.entries.limit(3)
             else
-            @entries = current_team.entries
             @room = Room.new
             @entry = Entry.new
             @friend = Friend.new

@@ -14,17 +14,12 @@
         <hr>
         <p><%= link_to "退会する", "/teams/#{@team.id}", :method => "delete", :class => "btn-gradient-3d" %></p>
     <% else %>
-        <% @entries.each do |entry| %>
-            <% if exist_team(@team.id,entry.room_id) %>
-            <% else %>
                     <%= form_for @room do |f| %>
                         <%= fields_for @entry do |e| %>
                         <%= e.hidden_field :team_id  , :value => @team.id %>
                         <p><%= f.submit "チャット", :class => "btn-gradient-3d" %></p>
                         <% end %>
                     <% end %>
-            <% end %>
-        <% end %>        
     <% end %>
     <hr>
 <p><a href="/" class="btn-gradient-3d">トップに戻る</a></p>
